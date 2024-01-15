@@ -23,7 +23,7 @@ void BaseGUI::render()
   ImGui_ImplGlfw_NewFrame();
   ImGui::NewFrame();
 
-  this->update();
+  this->renderUI();
 
   ImGui::Render();
   ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

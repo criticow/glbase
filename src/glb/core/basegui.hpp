@@ -17,5 +17,5 @@ class BaseGUI
   Window *window = nullptr;
   
   protected:
-  virtual void update() {};
+  virtual void renderUI() {};
 };
