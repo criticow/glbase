@@ -37,7 +37,7 @@ void Time::update()
   }
 }
 
-bool Time::passed(const std::string &name, float amount)
+bool Time::hasPassed(const std::string &name, float milliseconds)
 {
   // There is no register of the starting time in the storage
   if(this->timeStorage.find(name) == this->timeStorage.end())
@@ -46,7 +46,7 @@ bool Time::passed(const std::string &name, float amount)
   }
 
   // The amount expected to pass have passed
-  if((this->currentTime - this->timeStorage[name]) * 1000 >= amount)
+  if((this->currentTime - this->timeStorage[name]) * 1000 >= milliseconds)
   {
     // Set the starting time in the storage
     this->timeStorage[name] = this->currentTime;

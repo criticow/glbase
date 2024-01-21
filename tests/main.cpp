@@ -11,7 +11,7 @@ int main()
     window.pollEvents();
     time.update();
 
-    if(time.passed("teste", 1000))
+    if(time.hasPassed("teste", 1000))
     {
       LOGGER_DEBUG("1 Second passed");
     }

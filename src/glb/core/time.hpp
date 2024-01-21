@@ -15,7 +15,7 @@ class Time
 
   Time();
   void update();
-  bool passed(const std::string &name, float amount);
+  bool hasPassed(const std::string &name, float milliseconds);
 
   private:
   static std::unordered_map<std::string, float> timeStorage;
