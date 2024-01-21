@@ -1,5 +1,7 @@
 #include "time.hpp"
 
+std::unordered_map<std::string, float> Time::timeStorage;
+
 Time::Time()
 {
   this->deltaTime = 0.0f;
@@ -33,4 +35,23 @@ void Time::update()
     this->justUpdated = true;
     this->lastUpdateTime = this->currentTime;
   }
+}
+
+bool Time::passed(const std::string &name, float amount)
+{
+  // There is no register of the starting time in the storage
+  if(this->timeStorage.find(name) == this->timeStorage.end())
+  {
+    this->timeStorage[name] = this->currentTime;
+  }
+
+  // The amount expected to pass have passed
+  if((this->currentTime - this->timeStorage[name]) * 1000 >= amount)
+  {
+    // Set the starting time in the storage
+    this->timeStorage[name] = this->currentTime;
+    return true;
+  }
+
+  return false;
 }

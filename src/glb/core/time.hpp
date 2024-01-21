@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glbpch.hpp>
+#include <glb/util/logger.hpp>
 
 class Time
 {
@@ -14,7 +15,11 @@ class Time
 
   Time();
   void update();
+  bool passed(const std::string &name, float amount);
+
   private:
+  static std::unordered_map<std::string, float> timeStorage;
+
   float deltaTimeSum;
   int deltaTimeCount;
   float lastUpdateTime;
