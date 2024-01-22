@@ -2,13 +2,12 @@
 
 int main()
 {
-  Temporizer tempo;
-  while(true)
-  {
-    if(tempo.hasPassed("teste", 1000))
-    {
-      LOGGER_DEBUG("1 second passed");
-    }
-  }
+  Window window(800, 600, "Teste", true);
+  window.setUserPointer();
+  window.loadOpenGL();
+  BaseGUI gui;
+  gui.setup(window);
+
+
   return 0;
 }

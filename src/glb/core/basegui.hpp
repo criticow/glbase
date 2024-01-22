@@ -17,5 +17,5 @@ class BaseGUI
   Window *window = nullptr;
   
   protected:
-  virtual void renderUI() {};
+  virtual void renderUI() { ImGui::ShowDemoWindow(); };
 };
