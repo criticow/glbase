@@ -2,21 +2,13 @@
 
 int main()
 {
-  Window window(800, 600, "Timer", true);
-  window.setUserPointer();
-  Time time;
-
-  while(window.isOpen())
+  Temporizer tempo;
+  while(true)
   {
-    window.pollEvents();
-    time.update();
-
-    if(time.hasPassed("teste", 1000))
+    if(tempo.hasPassed("teste", 1000))
     {
-      LOGGER_DEBUG("1 Second passed");
+      LOGGER_DEBUG("1 second passed");
     }
   }
-
-  window.destroy();
   return 0;
 }
