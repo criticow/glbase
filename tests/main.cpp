@@ -2,11 +2,15 @@
 
 int main()
 {
-  LOGGER_DEBUG(Random::choose(1, 50));
-  LOGGER_DEBUG(Random::choose(1, 50));
-  LOGGER_DEBUG(Random::choose(1, 50));
-  LOGGER_DEBUG(Random::choose(1, 50));
-  LOGGER_DEBUG(Random::choose(1, 50));
+  Window window(800, 600, "Icon", false);
+  window.setUserPointer();
+  // window.setIcon("data/icons");
+  
+  while(window.isOpen())
+  {
+    window.pollEvents();
+  }
 
+  window.destroy();
   return 0;
 }

@@ -135,6 +135,46 @@ void Window::clear()
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+void Window::setIcon(const std::string &folder)
+{
+  std::filesystem::path path(folder);
+  std::vector<std::string> images;
+
+  try
+  {
+    if(std::filesystem::is_directory(path))
+    {
+      for(const auto &entry : std::filesystem::directory_iterator(path))
+      {
+        images.push_back(entry.path().string());
+      }
+    }
+    else
+    {
+      images.push_back(folder);
+    }
+  }
+  catch(const std::exception& e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+
+  std::vector<GLFWimage> icons(images.size());
+  
+  for(size_t i = 0; i < images.size(); i++)
+  {
+    icons[i].pixels = stbi_load(images[i].c_str(), &icons[i].width, &icons[i].height, nullptr, 4);
+  }
+
+  // Set the window icon
+  glfwSetWindowIcon(this->handle, images.size(), icons.data());
+
+  for(auto &icon : icons)
+  {
+    stbi_image_free(icon.pixels);
+  }
+}
+
 void Window::framebufferSizeCallback(GLFWwindow *handle, int width, int height)
 {
   // Do nothing

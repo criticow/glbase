@@ -2,6 +2,7 @@
 
 #include <glbpch.hpp>
 #include <glb/util/logger.hpp>
+#include <stb_image.h>
 
 struct Mouse
 {
@@ -41,6 +42,7 @@ class Window
   void updateViewport();
   void close();
   void clear();
+  void setIcon(const std::string &folder);
 
   // Callbacks
   static void framebufferSizeCallback(GLFWwindow *handle, int width, int height);
