@@ -2,12 +2,11 @@
 
 int main()
 {
-  Window window(800, 600, "Teste", true);
-  window.setUserPointer();
-  window.loadOpenGL();
-  BaseGUI gui;
-  gui.setup(window);
-
+  LOGGER_DEBUG(Random::choose(1, 50));
+  LOGGER_DEBUG(Random::choose(1, 50));
+  LOGGER_DEBUG(Random::choose(1, 50));
+  LOGGER_DEBUG(Random::choose(1, 50));
+  LOGGER_DEBUG(Random::choose(1, 50));
 
   return 0;
 }
