@@ -29,6 +29,15 @@ Input::Input()
     { KEY_F11, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_F11 } } },
     { KEY_F12, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_F12 } } },
     { KEY_ESC, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_ESCAPE } } },
+    { KEY_1, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_1 } } },
+    { KEY_2, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_2 } } },
+    { KEY_3, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_3 } } },
+    { KEY_4, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_4 } } },
+    { KEY_5, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_5 } } },
+    { KEY_6, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_6 } } },
+    { KEY_7, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_7 } } },
+    { KEY_8, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_8 } } },
+    { KEY_9, { Action::Origin::KEYBOARD, {}, { GLFW_KEY_9 } } },
   };
 }
 

@@ -28,6 +28,15 @@
 #define KEY_F11 "key_f11"
 #define KEY_F12 "key_f12"
 #define KEY_ESC "key_esc"
+#define KEY_1 "key_1"
+#define KEY_2 "key_2"
+#define KEY_3 "key_3"
+#define KEY_4 "key_4"
+#define KEY_5 "key_5"
+#define KEY_6 "key_6"
+#define KEY_7 "key_7"
+#define KEY_8 "key_8"
+#define KEY_9 "key_9"
 
 struct Action
 {
