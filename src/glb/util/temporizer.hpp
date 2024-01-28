@@ -16,6 +16,7 @@ class Temporizer
   void update();
   double getTime();
   bool hasPassed(const std::string &name, float milliseconds);
+  void clearTimepoint(const std::string &name);
 
   private:
   std::unordered_map<std::string, float> timeStorage;

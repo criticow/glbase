@@ -60,3 +60,8 @@ bool Temporizer::hasPassed(const std::string &name, float milliseconds)
 
   return false;
 }
+
+void Temporizer::clearTimepoint(const std::string &name)
+{
+  this->timeStorage.erase(name);
+}
