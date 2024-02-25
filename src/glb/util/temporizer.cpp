@@ -65,3 +65,30 @@ void Temporizer::clearTimepoint(const std::string &name)
 {
   this->timeStorage.erase(name);
 }
+
+void Temporizer::setCooldown(const std::string &name, float milliseconds)
+{
+  // Saving the cooldown time
+  this->cooldownStorage[name + "_cooldown"] = milliseconds;
+  // Saving the starting point of the cooldown
+  this->timeStorage[name + "_cooldown"] = this->getTime();
+}
+
+bool Temporizer::isOnCooldown(const std::string &name)
+{
+  bool res = true;
+
+  if(this->cooldownStorage.find(name + "_cooldown") != this->cooldownStorage.end())
+  {
+    float cdTime = this->cooldownStorage[name + "_cooldown"];
+    float cdTimePoint = this->timeStorage[name + "_cooldown"];
+
+    // Check if the cooldown time has passed
+    if((this->getTime() - cdTimePoint) * 1000 >= cdTime)
+    {
+      res = false;
+    }
+  }
+
+  return res;
+}

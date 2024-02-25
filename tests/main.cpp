@@ -9,9 +9,25 @@ int main()
   GUI gui;
   gui.setup(window);
   // window.setIcon("data/icons");
+
+  Temporizer tempo;
+  bool it = true;
   
   while(window.isOpen())
   {
+    tempo.update();
+
+    if(it)
+    {
+      it = false;
+      tempo.setCooldown("myCd", 5000);
+    }
+
+    if(!tempo.isOnCooldown("myCd"))
+    {
+      std::cout << "CD ended" << std::endl;
+    }
+
     window.pollEvents();
     window.clear();
     gui.render();
