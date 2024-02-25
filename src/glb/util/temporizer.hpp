@@ -18,6 +18,7 @@ class Temporizer
   bool hasPassed(const std::string &name, float milliseconds);
   void clearTimepoint(const std::string &name);
   void setCooldown(const std::string &name, float milliseconds);
+  float getCooldown(const std::string &name);
   bool isOnCooldown(const std::string &name);
 
   private:

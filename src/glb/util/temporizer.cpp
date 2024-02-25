@@ -74,20 +74,43 @@ void Temporizer::setCooldown(const std::string &name, float milliseconds)
   this->timeStorage[name + "_cooldown"] = this->getTime();
 }
 
+float Temporizer::getCooldown(const std::string &name)
+{
+  // Check if there is a cd already, if not create one with 0 cd
+  if(this->cooldownStorage.find(name + "_cooldown") == this->cooldownStorage.end())
+  {
+    // Saving the cooldown time
+    this->cooldownStorage[name + "_cooldown"] = 0;
+    // Saving the starting point of the cooldown
+    this->timeStorage[name + "_cooldown"] = this->getTime();
+  }
+
+  float cdTime = this->cooldownStorage[name + "_cooldown"];
+  float cdTimePoint = this->timeStorage[name + "_cooldown"];
+  float remainingTime = (this->getTime() - cdTimePoint) * 1000.0f - cdTime;
+  return remainingTime < 0.0f ? remainingTime : 0.0f;
+}
+
 bool Temporizer::isOnCooldown(const std::string &name)
 {
   bool res = true;
 
-  if(this->cooldownStorage.find(name + "_cooldown") != this->cooldownStorage.end())
+  // Check if there is a cd already, if not create one with 0 cd
+  if(this->cooldownStorage.find(name + "_cooldown") == this->cooldownStorage.end())
   {
-    float cdTime = this->cooldownStorage[name + "_cooldown"];
-    float cdTimePoint = this->timeStorage[name + "_cooldown"];
+    // Saving the cooldown time
+    this->cooldownStorage[name + "_cooldown"] = 0;
+    // Saving the starting point of the cooldown
+    this->timeStorage[name + "_cooldown"] = this->getTime();
+  }
 
-    // Check if the cooldown time has passed
-    if((this->getTime() - cdTimePoint) * 1000 >= cdTime)
-    {
-      res = false;
-    }
+  float cdTime = this->cooldownStorage[name + "_cooldown"];
+  float cdTimePoint = this->timeStorage[name + "_cooldown"];
+
+  // Check if the cooldown time has passed
+  if((this->getTime() - cdTimePoint) * 1000 >= cdTime)
+  {
+    res = false;
   }
 
   return res;
